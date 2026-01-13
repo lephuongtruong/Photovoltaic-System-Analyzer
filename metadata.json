@@ -1,0 +1,5 @@
+{
+  "name": "Photovoltaic-System Analyzer",
+  "description": "A professional solar energy yield calculator based on the Liu & Jordan model and Performance Ratio (PR) methodologies for monthly and daily estimation.",
+  "requestFramePermissions": []
+}
