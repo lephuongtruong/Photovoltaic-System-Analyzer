@@ -1,8 +1,12 @@
 
 export enum ModelType {
+  DASHBOARD = 'DASHBOARD',
   TEMPERATURE = 'TEMPERATURE',
   PR = 'PR',
-  ANALYSIS = 'ANALYSIS'
+  LIU_JORDAN = 'LIU_JORDAN',
+  DIODE = 'DIODE',
+  ANALYSIS = 'ANALYSIS',
+  HISTORY = 'HISTORY'
 }
 
 export interface SolarInputs {
@@ -15,10 +19,26 @@ export interface SolarInputs {
   noct: number; // T_noct: NOCT (°C)
   ambientTemp: number; // T_a(t): Nhiệt độ môi trường (°C)
   pr: number; // Performance Ratio (0.6 - 0.85)
+  pTotalKw: number; // P_total_installed_kWp
+  pModuleW: number; // P_module_Wp
 }
 
 export interface CalculationResult {
   hourlyEnergy: number[];
   totalDaily: number;
   totalMonthly: number;
+}
+
+export interface SimulationRecord {
+  id?: string;
+  userId: string;
+  modelType: ModelType;
+  projectName?: string;
+  timestamp: any; // Firestore Timestamp
+  inputs: any; // Model-specific inputs
+  results: any; // Full calculation results
+  metadata?: {
+    location?: string;
+    description?: string;
+  };
 }

@@ -1,0 +1,24 @@
+{
+  "entities": {
+    "SimulationRecord": {
+      "title": "Simulation Record",
+      "description": "A record of a solar simulation run.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who ran the simulation." },
+        "modelType": { "type": "string", "description": "The type of model used (DIODE, TEMPERATURE, PR, LIU_JORDAN)." },
+        "timestamp": { "type": "object", "description": "Firestore server timestamp." },
+        "inputs": { "type": "object", "description": "The input parameters for the simulation." },
+        "results": { "type": "object", "description": "The calculated results of the simulation." },
+        "metadata": { "type": "object", "description": "Additional metadata like location or description." }
+      },
+      "required": ["userId", "modelType", "timestamp", "inputs", "results"]
+    }
+  },
+  "firestore": {
+    "/simulations/{simulationId}": {
+      "schema": "SimulationRecord",
+      "description": "A collection of simulation records."
+    }
+  }
+}
